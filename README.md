@@ -18,7 +18,7 @@ Managed with [GNU Stow](https://www.gnu.org/software/stow/).
 ```bash
 git clone https://github.com/dbrandonk/bk-configs.git
 cd bk-configs
-stow bash tmux vim cosmic nvim
+stow --target=~ bash tmux vim cosmic nvim
 ```
 
 That's it, stow creates symlinks from `~` back into `bk-configs`.
