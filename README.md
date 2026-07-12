@@ -10,13 +10,14 @@ Managed with [GNU Stow](https://www.gnu.org/software/stow/).
 | `tmux` | `.tmux.conf` | `~` |
 | `vim` | `.vimrc` | `~` |
 | `cosmic` | `.config/cosmic/` | `~` |
+| `nvim` | `.config/nvim/` | `~` |
 
 ## Setup on a new machine
 
 ```bash
 git clone <repo-url> ~/.dotfiles
 cd ~/.dotfiles
-stow bash tmux vim cosmic
+stow bash tmux vim cosmic nvim
 ```
 
 That's it — stow creates symlinks from `~` back into `~/.dotfiles`.
