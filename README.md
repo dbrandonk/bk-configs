@@ -6,7 +6,8 @@ Managed with [GNU Stow](https://www.gnu.org/software/stow/).
 
 | Package | Files | Target |
 |---------|-------|--------|
-| `bash` | `.bashrc`, `.bashrc-extra` | `~` |
+| `bash` | `.bashrc` | `~` |
+| `bash-extra` | `.bashrc-extra` | `~` |
 | `tmux` | `.tmux.conf` | `~` |
 | `vim` | `.vimrc` | `~` |
 | `cosmic` | `.config/cosmic/` | `~` |
@@ -18,7 +19,7 @@ Managed with [GNU Stow](https://www.gnu.org/software/stow/).
 ```bash
 git clone https://github.com/dbrandonk/bk-configs.git
 cd bk-configs
-stow --target=~ bash tmux vim cosmic nvim
+stow --target=~ bash bash-extra tmux vim cosmic nvim
 ```
 
 That's it, stow creates symlinks from `~` back into `bk-configs`.
