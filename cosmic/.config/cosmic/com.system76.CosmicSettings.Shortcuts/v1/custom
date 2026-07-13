@@ -1,14 +1,146 @@
 {
-    // Universal OS-level tile focus, mirrors GlazeWM's alt+hjkl bindings
-    // (see glzr/.glzr/glazewm/config.yaml). Arrow keys are deliberately left
-    // unbound here so Alt+arrows stays free for tmux pane navigation.
+    // --- Alt-based tiling manager bindings ---
+    // Replaces Super as the primary tiling-manager modifier (mirrors GlazeWM's
+    // alt/alt+shift scheme, see glzr/.glzr/glazewm/config.yaml). hjkl-only
+    // (no bare Alt+arrows) so Alt+arrows stays free for tmux pane navigation;
+    // Alt+Ctrl(+Shift) combos are safe to also bind to arrows since tmux never
+    // uses those combos. Multi-monitor SwitchOutput/MoveToOutput are left on
+    // their existing Super+Alt / Super+Shift+Alt bindings untouched, since
+    // reclaiming that combo for Alt-only would collide with Focus/Move below.
+
     (modifiers: [Alt], key: "h"): Focus(Left),
     (modifiers: [Alt], key: "j"): Focus(Down),
     (modifiers: [Alt], key: "k"): Focus(Up),
     (modifiers: [Alt], key: "l"): Focus(Right),
+    (modifiers: [Alt], key: "u"): Focus(Out),
+    (modifiers: [Alt], key: "i"): Focus(In),
 
     (modifiers: [Alt, Shift], key: "h"): Move(Left),
     (modifiers: [Alt, Shift], key: "j"): Move(Down),
     (modifiers: [Alt, Shift], key: "k"): Move(Up),
     (modifiers: [Alt, Shift], key: "l"): Move(Right),
+
+    (modifiers: [Alt], key: "1"): Workspace(1),
+    (modifiers: [Alt], key: "2"): Workspace(2),
+    (modifiers: [Alt], key: "3"): Workspace(3),
+    (modifiers: [Alt], key: "4"): Workspace(4),
+    (modifiers: [Alt], key: "5"): Workspace(5),
+    (modifiers: [Alt], key: "6"): Workspace(6),
+    (modifiers: [Alt], key: "7"): Workspace(7),
+    (modifiers: [Alt], key: "8"): Workspace(8),
+    (modifiers: [Alt], key: "9"): Workspace(9),
+    (modifiers: [Alt], key: "0"): LastWorkspace,
+    (modifiers: [Alt, Shift], key: "1"): MoveToWorkspace(1),
+    (modifiers: [Alt, Shift], key: "2"): MoveToWorkspace(2),
+    (modifiers: [Alt, Shift], key: "3"): MoveToWorkspace(3),
+    (modifiers: [Alt, Shift], key: "4"): MoveToWorkspace(4),
+    (modifiers: [Alt, Shift], key: "5"): MoveToWorkspace(5),
+    (modifiers: [Alt, Shift], key: "6"): MoveToWorkspace(6),
+    (modifiers: [Alt, Shift], key: "7"): MoveToWorkspace(7),
+    (modifiers: [Alt, Shift], key: "8"): MoveToWorkspace(8),
+    (modifiers: [Alt, Shift], key: "9"): MoveToWorkspace(9),
+    (modifiers: [Alt, Shift], key: "0"): MoveToLastWorkspace,
+
+    (modifiers: [Alt, Ctrl], key: "Left"): PreviousWorkspace,
+    (modifiers: [Alt, Ctrl], key: "Down"): NextWorkspace,
+    (modifiers: [Alt, Ctrl], key: "Up"): PreviousWorkspace,
+    (modifiers: [Alt, Ctrl], key: "Right"): NextWorkspace,
+    (modifiers: [Alt, Ctrl], key: "h"): PreviousWorkspace,
+    (modifiers: [Alt, Ctrl], key: "j"): NextWorkspace,
+    (modifiers: [Alt, Ctrl], key: "k"): PreviousWorkspace,
+    (modifiers: [Alt, Ctrl], key: "l"): NextWorkspace,
+    (modifiers: [Alt, Shift, Ctrl], key: "Left"): MoveToPreviousWorkspace,
+    (modifiers: [Alt, Shift, Ctrl], key: "Down"): MoveToNextWorkspace,
+    (modifiers: [Alt, Shift, Ctrl], key: "Up"): MoveToPreviousWorkspace,
+    (modifiers: [Alt, Shift, Ctrl], key: "Right"): MoveToNextWorkspace,
+    (modifiers: [Alt, Shift, Ctrl], key: "h"): MoveToPreviousWorkspace,
+    (modifiers: [Alt, Shift, Ctrl], key: "j"): MoveToNextWorkspace,
+    (modifiers: [Alt, Shift, Ctrl], key: "k"): MoveToPreviousWorkspace,
+    (modifiers: [Alt, Shift, Ctrl], key: "l"): MoveToNextWorkspace,
+
+    (modifiers: [Alt], key: "o"): ToggleOrientation,
+    (modifiers: [Alt], key: "s"): ToggleStacking,
+    (modifiers: [Alt], key: "y"): ToggleTiling,
+    (modifiers: [Alt], key: "g"): ToggleWindowFloating,
+    (modifiers: [Alt], key: "x"): SwapWindow,
+
+    (modifiers: [Alt], key: "m"): Maximize,
+    (modifiers: [Alt], key: "F11"): Fullscreen,
+    (modifiers: [Alt], key: "r"): Resizing(Outwards),
+    (modifiers: [Alt, Shift], key: "r"): Resizing(Inwards),
+
+    // Close moved off Super+q to match GlazeWM's alt+shift+q (Alt+F4 still
+    // works too, from the system defaults).
+    (modifiers: [Alt, Shift], key: "q"): Close,
+
+    // --- Disable the old Super-based defaults for everything moved above ---
+
+    (modifiers: [Super], key: "Left"): Disable,
+    (modifiers: [Super], key: "Right"): Disable,
+    (modifiers: [Super], key: "Up"): Disable,
+    (modifiers: [Super], key: "Down"): Disable,
+    (modifiers: [Super], key: "h"): Disable,
+    (modifiers: [Super], key: "j"): Disable,
+    (modifiers: [Super], key: "k"): Disable,
+    (modifiers: [Super], key: "l"): Disable,
+    (modifiers: [Super], key: "u"): Disable,
+    (modifiers: [Super], key: "i"): Disable,
+    (modifiers: [Super, Shift], key: "Left"): Disable,
+    (modifiers: [Super, Shift], key: "Right"): Disable,
+    (modifiers: [Super, Shift], key: "Up"): Disable,
+    (modifiers: [Super, Shift], key: "Down"): Disable,
+    (modifiers: [Super, Shift], key: "h"): Disable,
+    (modifiers: [Super, Shift], key: "j"): Disable,
+    (modifiers: [Super, Shift], key: "k"): Disable,
+    (modifiers: [Super, Shift], key: "l"): Disable,
+
+    (modifiers: [Super], key: "1"): Disable,
+    (modifiers: [Super], key: "2"): Disable,
+    (modifiers: [Super], key: "3"): Disable,
+    (modifiers: [Super], key: "4"): Disable,
+    (modifiers: [Super], key: "5"): Disable,
+    (modifiers: [Super], key: "6"): Disable,
+    (modifiers: [Super], key: "7"): Disable,
+    (modifiers: [Super], key: "8"): Disable,
+    (modifiers: [Super], key: "9"): Disable,
+    (modifiers: [Super], key: "0"): Disable,
+    (modifiers: [Super, Shift], key: "1"): Disable,
+    (modifiers: [Super, Shift], key: "2"): Disable,
+    (modifiers: [Super, Shift], key: "3"): Disable,
+    (modifiers: [Super, Shift], key: "4"): Disable,
+    (modifiers: [Super, Shift], key: "5"): Disable,
+    (modifiers: [Super, Shift], key: "6"): Disable,
+    (modifiers: [Super, Shift], key: "7"): Disable,
+    (modifiers: [Super, Shift], key: "8"): Disable,
+    (modifiers: [Super, Shift], key: "9"): Disable,
+    (modifiers: [Super, Shift], key: "0"): Disable,
+
+    (modifiers: [Super, Ctrl], key: "Left"): Disable,
+    (modifiers: [Super, Ctrl], key: "Down"): Disable,
+    (modifiers: [Super, Ctrl], key: "Up"): Disable,
+    (modifiers: [Super, Ctrl], key: "Right"): Disable,
+    (modifiers: [Super, Ctrl], key: "h"): Disable,
+    (modifiers: [Super, Ctrl], key: "j"): Disable,
+    (modifiers: [Super, Ctrl], key: "k"): Disable,
+    (modifiers: [Super, Ctrl], key: "l"): Disable,
+    (modifiers: [Super, Shift, Ctrl], key: "Left"): Disable,
+    (modifiers: [Super, Shift, Ctrl], key: "Down"): Disable,
+    (modifiers: [Super, Shift, Ctrl], key: "Up"): Disable,
+    (modifiers: [Super, Shift, Ctrl], key: "Right"): Disable,
+    (modifiers: [Super, Shift, Ctrl], key: "h"): Disable,
+    (modifiers: [Super, Shift, Ctrl], key: "j"): Disable,
+    (modifiers: [Super, Shift, Ctrl], key: "k"): Disable,
+    (modifiers: [Super, Shift, Ctrl], key: "l"): Disable,
+
+    (modifiers: [Super], key: "o"): Disable,
+    (modifiers: [Super], key: "s"): Disable,
+    (modifiers: [Super], key: "y"): Disable,
+    (modifiers: [Super], key: "g"): Disable,
+    (modifiers: [Super], key: "x"): Disable,
+
+    (modifiers: [Super], key: "m"): Disable,
+    (modifiers: [Super], key: "F11"): Disable,
+    (modifiers: [Super], key: "r"): Disable,
+    (modifiers: [Super, Shift], key: "r"): Disable,
+    (modifiers: [Super], key: "q"): Disable,
 }
