@@ -12,6 +12,7 @@ Managed with [GNU Stow](https://www.gnu.org/software/stow/).
 | `vim` | `.vimrc` | `~` |
 | `cosmic` | `.config/cosmic/` | `~` |
 | `nvim` | `.config/nvim/` | `~` |
+| `claude` | `.claude/settings.json`, `.claude/CLAUDE.md` | `~` |
 | `glzr` | `.glzr/glazewm/config.yaml` | (`glzr` is for Windows only. Do not use stow `glzr`.) |
 
 ## Setup on a new machine
@@ -19,7 +20,7 @@ Managed with [GNU Stow](https://www.gnu.org/software/stow/).
 ```bash
 git clone https://github.com/dbrandonk/bk-configs.git
 cd bk-configs
-stow --target=~ bash bash-extra tmux vim cosmic nvim
+stow --target="$HOME" bash bash-extra tmux vim cosmic nvim claude
 ```
 
 That's it, stow creates symlinks from `~` back into `bk-configs`.
