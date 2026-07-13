@@ -7,7 +7,9 @@ general:
   # Example: The below command kills Zebar.
   shutdown_commands: ['shell-exec taskkill /IM zebar.exe /F']
   # Commands to run after the WM config is reloaded.
-  config_reload_commands: []
+  # `wm-redraw` flushes any stale window/monitor state, which makes
+  # `alt+shift+r` double as a manual "resync" after docking/undocking.
+  config_reload_commands: ['wm-redraw']
   # Whether to automatically focus windows underneath the cursor.
   focus_follows_cursor: false
   # Whether to switch back and forth between the previously focused
@@ -255,25 +257,30 @@ keybindings:
   - commands: ['focus --recent-workspace']
     bindings: ['alt+d']
   # Focus an across-display workspace. All 3 displays switch together.
-  # Focus lands on the CENTER display (the *b slice is listed last). If you
-  # want focus to land elsewhere, just move your preferred slice to the end.
-  - commands: ['focus --workspace 1a', 'focus --workspace 1c', 'focus --workspace 1b']
+  # Focus lands on the LEFT display (the *a slice is listed last), because
+  # `bind_to_monitor: 0` always resolves to whichever single monitor is
+  # connected when you're down to 1 screen (bind_to_monitor is a live sorted
+  # position, not a fixed physical monitor). Ending on *a keeps solo-monitor
+  # mode landing on sensible content instead of a relocated center-monitor
+  # workspace. If you want focus to land elsewhere while docked, just move
+  # your preferred slice to the end.
+  - commands: ['focus --workspace 1b', 'focus --workspace 1c', 'focus --workspace 1a']
     bindings: ['alt+1']
-  - commands: ['focus --workspace 2a', 'focus --workspace 2c', 'focus --workspace 2b']
+  - commands: ['focus --workspace 2b', 'focus --workspace 2c', 'focus --workspace 2a']
     bindings: ['alt+2']
-  - commands: ['focus --workspace 3a', 'focus --workspace 3c', 'focus --workspace 3b']
+  - commands: ['focus --workspace 3b', 'focus --workspace 3c', 'focus --workspace 3a']
     bindings: ['alt+3']
-  - commands: ['focus --workspace 4a', 'focus --workspace 4c', 'focus --workspace 4b']
+  - commands: ['focus --workspace 4b', 'focus --workspace 4c', 'focus --workspace 4a']
     bindings: ['alt+4']
-  - commands: ['focus --workspace 5a', 'focus --workspace 5c', 'focus --workspace 5b']
+  - commands: ['focus --workspace 5b', 'focus --workspace 5c', 'focus --workspace 5a']
     bindings: ['alt+5']
-  - commands: ['focus --workspace 6a', 'focus --workspace 6c', 'focus --workspace 6b']
+  - commands: ['focus --workspace 6b', 'focus --workspace 6c', 'focus --workspace 6a']
     bindings: ['alt+6']
-  - commands: ['focus --workspace 7a', 'focus --workspace 7c', 'focus --workspace 7b']
+  - commands: ['focus --workspace 7b', 'focus --workspace 7c', 'focus --workspace 7a']
     bindings: ['alt+7']
-  - commands: ['focus --workspace 8a', 'focus --workspace 8c', 'focus --workspace 8b']
+  - commands: ['focus --workspace 8b', 'focus --workspace 8c', 'focus --workspace 8a']
     bindings: ['alt+8']
-  - commands: ['focus --workspace 9a', 'focus --workspace 9c', 'focus --workspace 9b']
+  - commands: ['focus --workspace 9b', 'focus --workspace 9c', 'focus --workspace 9a']
     bindings: ['alt+9']
   # Move the focused window's parent workspace to a monitor in a given
   # direction.
