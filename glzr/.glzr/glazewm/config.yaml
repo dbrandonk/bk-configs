@@ -215,11 +215,17 @@ keybindings:
   - commands: ['toggle-floating --centered']
     bindings: ['alt+shift+space']
   # Change the focused window to be tiling.
+  # (moved off alt+t to alt+y, matching Cosmic's Super+y ToggleTiling)
   - commands: ['toggle-tiling']
-    bindings: ['alt+t']
+    bindings: ['alt+y']
   # Change the focused window to be fullscreen.
   - commands: ['toggle-fullscreen']
     bindings: ['alt+f']
+  # Launch web browser and terminal, matching Cosmic's Super+b / Super+t.
+  - commands: ['shell-exec firefox']
+    bindings: ['alt+b']
+  - commands: ['shell-exec wt']
+    bindings: ['alt+t']
   # Minimize focused window.
   - commands: ['toggle-minimized']
     bindings: ['alt+m']
