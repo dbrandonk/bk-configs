@@ -1,0 +1,14 @@
+{
+    // Universal OS-level tile focus, mirrors GlazeWM's alt+hjkl bindings
+    // (see glzr/.glzr/glazewm/config.yaml). Arrow keys are deliberately left
+    // unbound here so Alt+arrows stays free for tmux pane navigation.
+    (modifiers: [Alt], key: "h"): Focus(Left),
+    (modifiers: [Alt], key: "j"): Focus(Down),
+    (modifiers: [Alt], key: "k"): Focus(Up),
+    (modifiers: [Alt], key: "l"): Focus(Right),
+
+    (modifiers: [Alt, Shift], key: "h"): Move(Left),
+    (modifiers: [Alt, Shift], key: "j"): Move(Down),
+    (modifiers: [Alt, Shift], key: "k"): Move(Up),
+    (modifiers: [Alt, Shift], key: "l"): Move(Right),
+}
